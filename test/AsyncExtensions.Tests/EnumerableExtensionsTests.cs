@@ -111,7 +111,7 @@ public class EnumerableExtensionsTests
     public async Task ListToArraySucceeds()
     {
         // Arrange
-        async Task<IEnumerable<string>> Method()
+        async Task<List<string>> Method()
         {
             await Task.Delay(10);
             return new List<string>() { "a", "b", "c" };
@@ -128,7 +128,7 @@ public class EnumerableExtensionsTests
     public async Task NullListToArraySucceeds()
     {
         // Arrange
-        async Task<IEnumerable<string>?> Method()
+        async Task<List<string>?> Method()
         {
             await Task.Delay(10);
             return null;
