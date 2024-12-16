@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace AsyncExtensions.Tests;
+namespace Common.AsyncExtensions.Tests;
 
 public class EnumerableExtensionsTests
 {

@@ -5,6 +5,7 @@
         <LangVersion>latestmajor</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Common.AsyncExtensions.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AsyncExtensions\AsyncExtensions.csproj" />
+      <ProjectReference Include="..\..\src\AsyncExtensions\AsyncExtensions.csproj" />
     </ItemGroup>
-
 </Project>

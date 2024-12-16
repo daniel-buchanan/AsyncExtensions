@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AsyncExtensions;
+namespace Common.AsyncExtensions;
 
 public static class EnumerableExtensions
 {

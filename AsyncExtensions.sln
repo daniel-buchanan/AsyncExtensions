@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExtensions", "src\AsyncExtensions\AsyncExtensions.csproj", "{3B0866B2-0AAD-4374-86D2-9176C650B3EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExtensions.Tests", "src\AsyncExtensions.Tests\AsyncExtensions.Tests.csproj", "{6115B39A-DD53-4EB5-BC1A-2EBA04FAD330}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExtensions.Tests", "test\AsyncExtensions.Tests\AsyncExtensions.Tests.csproj", "{6115B39A-DD53-4EB5-BC1A-2EBA04FAD330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

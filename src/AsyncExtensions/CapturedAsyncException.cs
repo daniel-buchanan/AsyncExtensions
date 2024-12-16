@@ -1,6 +1,6 @@
 using System;
 
-namespace AsyncExtensions;
+namespace Common.AsyncExtensions;
 
 public class CapturedAsyncException : Exception
 {

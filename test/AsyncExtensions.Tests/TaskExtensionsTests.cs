@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Xunit;
 using FluentAssertions;
 
-namespace AsyncExtensions.Tests;
+namespace Common.AsyncExtensions.Tests;
 
 public class TaskExtensionsTests
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace AsyncExtensions;
+namespace Common.AsyncExtensions;
 
 public static class TaskExtensions
 {

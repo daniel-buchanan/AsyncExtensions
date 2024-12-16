@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latestmajor</LangVersion>
         <Nullable>disable</Nullable>
+        <RootNamespace>Common.AsyncExtensions</RootNamespace>
     </PropertyGroup>
 
 </Project>
