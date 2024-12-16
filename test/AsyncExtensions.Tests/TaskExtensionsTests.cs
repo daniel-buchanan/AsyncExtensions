@@ -61,23 +61,19 @@ public class TaskExtensionsTests
             .And.Message.Should().Be("One or more errors occurred. (hello)");
     }
 
-    public static IEnumerable<object[]> AwaitableTestCases
-    {
-        get
+    public static TheoryData<int, long, long> AwaitableTestCases =>
+        new()
         {
-            yield return [100, 90, 110];
-            yield return [400, 395, 405];
-            yield return [5000, 4990, 5010];
-        }
-    }
-    
-    public static IEnumerable<object[]> AwaitableResultTestCases
-    {
-        get
+            { 100, 90, 110 },
+            { 400, 395, 405 },
+            { 5000, 4990, 5010 }
+        };
+
+    public static TheoryData<int, object, long, long> AwaitableResultTestCases =>
+        new()
         {
-            yield return [100, "hello world", 90, 110];
-            yield return [400, new[] { "hello", "dangerous", "world" }, 395, 405];
-            yield return [5000, new { Id = 42, Name = "MeaningOf", Type = typeof(int) }, 4990, 5010];
-        }
-    }
+            { 100, "hello world", 90, 110 },
+            { 400, new[] { "hello", "dangerous", "world" }, 390, 410 },
+            { 5000, new { Id = 42, Name = "MeaningOf", Type = typeof(int) }, 4990, 5010 }
+        };
 }
