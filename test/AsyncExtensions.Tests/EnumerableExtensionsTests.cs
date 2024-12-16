@@ -23,6 +23,23 @@ public class EnumerableExtensionsTests
     }
     
     [Fact]
+    public async Task NullArrayToListSucceeds()
+    {
+        // Arrange
+        async Task<string[]?> Method()
+        {
+            await Task.Delay(10);
+            return null;
+        }
+
+        // Act
+        var result = await Method().ToListAsync();
+
+        // Assert
+        result.Should().BeAssignableTo<List<string>>();
+    }
+    
+    [Fact]
     public async Task EnumerableToListSucceeds()
     {
         // Arrange
@@ -30,6 +47,23 @@ public class EnumerableExtensionsTests
         {
             await Task.Delay(10);
             return Enumerable.Repeat("a", 4);
+        }
+
+        // Act
+        var result = await Method().ToListAsync();
+
+        // Assert
+        result.Should().BeAssignableTo<List<string>>();
+    }
+    
+    [Fact]
+    public async Task NullEnumerableToListSucceeds()
+    {
+        // Arrange
+        async Task<IEnumerable<string>?> Method()
+        {
+            await Task.Delay(10);
+            return null;
         }
 
         // Act
@@ -57,6 +91,23 @@ public class EnumerableExtensionsTests
     }
     
     [Fact]
+    public async Task NullEnumerableToArraySucceeds()
+    {
+        // Arrange
+        async Task<IEnumerable<string>?> Method()
+        {
+            await Task.Delay(10);
+            return null;
+        }
+
+        // Act
+        var result = await Method().ToArrayAsync();
+
+        // Assert
+        result.Should().BeAssignableTo<string[]>();
+    }
+    
+    [Fact]
     public async Task ListToArraySucceeds()
     {
         // Arrange
@@ -64,6 +115,23 @@ public class EnumerableExtensionsTests
         {
             await Task.Delay(10);
             return new List<string>() { "a", "b", "c" };
+        }
+
+        // Act
+        var result = await Method().ToArrayAsync();
+
+        // Assert
+        result.Should().BeAssignableTo<string[]>();
+    }
+    
+    [Fact]
+    public async Task NullListToArraySucceeds()
+    {
+        // Arrange
+        async Task<IEnumerable<string>?> Method()
+        {
+            await Task.Delay(10);
+            return null;
         }
 
         // Act
