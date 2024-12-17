@@ -60,6 +60,26 @@ public class TaskExtensionsTests
             .WithInnerException<Exception>()
             .And.Message.Should().Be("One or more errors occurred. (hello)");
     }
+    
+    [Fact]
+    public void CaptureExceptionIsThrownForTyped()
+    {
+        // Arrange
+        async Task<string> AwaitableMethod()
+        {
+            await Task.Delay(10);
+            throw new Exception("hello");
+        }
+        
+        // Act
+        var m = () => AwaitableMethod().WaitFor();
+
+        // Assert
+        m.Should()
+            .Throw<CapturedAsyncException>()
+            .WithInnerException<Exception>()
+            .And.Message.Should().Be("One or more errors occurred. (hello)");
+    }
 
     public static TheoryData<int, long, long> AwaitableTestCases =>
         new()
