@@ -37,8 +37,8 @@ public class TaskExtensionsTests
         var r = st.Time(() => Method().WaitFor());
 
         // Assert
-        st.ElapsedMilliseconds.Should().BeInRange(minDelay, maxDelay);
-        r.Should().Be(result);
+        r.ElapsedMilliseconds.Should().BeInRange(minDelay, maxDelay);
+        r.Result.Should().Be(result);
     }
 
     [Fact]
