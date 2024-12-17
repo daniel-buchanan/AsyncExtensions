@@ -13,11 +13,7 @@ public static class EnumerableExtensions
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static Task<List<T>> ToListAsync<T>(this Task<IEnumerable<T>> self)
-    {
-        var result = self.WaitFor();
-        var converted = result?.ToList() ?? [];
-        return Task.FromResult(converted);
-    }
+        => self.ContinueWith(t => t.Result?.ToList() ?? []);
     
     /// <summary>
     /// 
@@ -26,11 +22,7 @@ public static class EnumerableExtensions
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static Task<List<T>> ToListAsync<T>(this Task<T[]> self)
-    {
-        var result = self.WaitFor();
-        var converted = result?.ToList() ?? [];
-        return Task.FromResult(converted);
-    }
+        => self.ContinueWith(t => t.Result?.ToList() ?? []);
 
     /// <summary>
     /// 
@@ -39,11 +31,7 @@ public static class EnumerableExtensions
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static Task<T[]> ToArrayAsync<T>(this Task<IEnumerable<T>> self)
-    {
-        var result = self.WaitFor();
-        var converted = result?.ToArray() ?? [];
-        return Task.FromResult(converted);  
-    }
+        => self.ContinueWith(t => t.Result?.ToArray() ?? []);
     
     /// <summary>
     /// 
@@ -52,9 +40,5 @@ public static class EnumerableExtensions
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static Task<T[]> ToArrayAsync<T>(this Task<List<T>> self)
-    {
-        var result = self.WaitFor();
-        var converted = result?.ToArray() ?? [];
-        return Task.FromResult(converted);  
-    }
+        => self.ContinueWith(t => t.Result?.ToArray() ?? []);
 }
