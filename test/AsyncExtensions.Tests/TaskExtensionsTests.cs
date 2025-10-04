@@ -41,6 +41,24 @@ public class TaskExtensionsTests
         r.Result.Should().Be(result);
     }
 
+    [Theory]
+    [MemberData(nameof(AwaitableTestCases))]
+    public void WaitForReturnsSuccessfullyWhenRunSynchronously(int delay, long minDelay, long maxDelay)
+    {
+        // Arrange
+        Task Method()
+        {
+            return new Task(() => Thread.Sleep(delay), CancellationToken.None, TaskCreationOptions.None);
+        }
+        
+        // Act
+        var st = new Stopwatch();
+        var r = st.Time(() => Method().WaitFor());
+        
+        // Assert
+        r.ElapsedMilliseconds.Should().BeInRange(minDelay, maxDelay);
+    }
+
     [Fact]
     public void CaptureExceptionIsThrown()
     {
