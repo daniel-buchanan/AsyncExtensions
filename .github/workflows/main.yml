@@ -67,5 +67,5 @@ jobs:
         PACKAGE_NAME: ${{ format('AsyncExtensions.{0}.nupkg', env.PACKAGE_VERSION) }}
       run: |
         dotnet nuget push ./output/$PACKAGE_NAME \
-          -k "${NUGET_API_KEY}" \
+          -k $NUGET_API_KEY \
           -s https://api.nuget.org/v3/index.json
