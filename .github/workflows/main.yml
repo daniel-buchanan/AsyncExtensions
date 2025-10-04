@@ -66,6 +66,6 @@ jobs:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         PACKAGE_NAME: ${{ format('Common.AsyncExtensions.{0}.nupkg', env.PACKAGE_VERSION) }}
       run: |
-        dotnet nuget push ./output/${PACKAGE_NAME} \
-          -k ${NUGET_API_KEY} \
+        dotnet nuget push ./output/$PACKAGE_NAME \
+          -k "${NUGET_API_KEY}" \
           -s https://api.nuget.org/v3/index.json
