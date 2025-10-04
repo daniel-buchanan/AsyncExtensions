@@ -5,6 +5,16 @@
         <LangVersion>latestmajor</LangVersion>
         <Nullable>disable</Nullable>
         <RootNamespace>Common.AsyncExtensions</RootNamespace>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageId>AsyncExtensions</PackageId>
+        <Version>1.0.1</Version>
+        <Authors>Daniel Buchanan</Authors>
+        <PackageTags>Async Extensions</PackageTags>
+        <Description>This package provides simple common async extensions</Description>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+    
 </Project>
