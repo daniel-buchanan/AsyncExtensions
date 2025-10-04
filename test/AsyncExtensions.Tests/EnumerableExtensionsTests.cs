@@ -152,7 +152,7 @@ public class EnumerableExtensionsTests
         }
 
         // Act
-        var result = await Method().ToEnumerableAsync();
+        var result = await Method().AsEnumerableAsync();
 
         // Assert
         result.Should().BeAssignableTo<IEnumerable<string>>();
@@ -169,7 +169,7 @@ public class EnumerableExtensionsTests
         }
 
         // Act
-        var result = await Method().ToEnumerableAsync();
+        var result = await Method().AsEnumerableAsync();
 
         // Assert
         result.Should().BeAssignableTo<IEnumerable<string>>();
@@ -186,7 +186,7 @@ public class EnumerableExtensionsTests
         }
 
         // Act
-        var result = await Method().ToEnumerableAsync();
+        var result = await Method().AsEnumerableAsync();
 
         // Assert
         result.Should().BeAssignableTo<IEnumerable<string>>();
@@ -204,7 +204,7 @@ public class EnumerableExtensionsTests
         }
 
         // Act
-        var result = await Method().ToEnumerableAsync();
+        var result = await Method().AsEnumerableAsync();
 
         // Assert
         result.Should().BeAssignableTo<IEnumerable<string>>();

@@ -48,7 +48,7 @@ public static class EnumerableExtensions
     /// <param name="self">The Task containing an IEnumerable.</param>
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
     /// <returns>A Task that, when completed, will contain the same IEnumerable, or null if the original IEnumerable is null.</returns>
-    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<IEnumerable<T>> self)
+    public static Task<IEnumerable<T>> AsEnumerableAsync<T>(this Task<IEnumerable<T>> self)
         => self.ContinueWith(t => t.Result?.AsEnumerable());
     
     /// <summary>
@@ -57,7 +57,7 @@ public static class EnumerableExtensions
     /// <param name="self">The Task containing an array to convert to an IEnumerable.</param>
     /// <typeparam name="T">The type of elements in the array.</typeparam>
     /// <returns>A Task that, when completed, will contain an IEnumerable view of the array, or null if the array is null.</returns>
-    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<T[]> self)
+    public static Task<IEnumerable<T>> AsEnumerableAsync<T>(this Task<T[]> self)
         => self.ContinueWith(t => t.Result?.AsEnumerable());
     
     /// <summary>
@@ -66,7 +66,7 @@ public static class EnumerableExtensions
     /// <param name="self">The Task containing a List to convert to an IEnumerable.</param>
     /// <typeparam name="T">The type of elements in the List.</typeparam>
     /// <returns>A Task that, when completed, will contain an IEnumerable view of the List, or null if the List is null.</returns>
-    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<List<T>> self)
+    public static Task<IEnumerable<T>> AsEnumerableAsync<T>(this Task<List<T>> self)
         => self.ContinueWith(t => t.Result?.AsEnumerable());
     
     /// <summary>
@@ -75,6 +75,6 @@ public static class EnumerableExtensions
     /// <param name="self">The Task containing an IList to convert to an IEnumerable.</param>
     /// <typeparam name="T">The type of elements in the IList.</typeparam>
     /// <returns>A Task that, when completed, will contain an IEnumerable view of the IList, or null if the IList is null.</returns>
-    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<IList<T>> self)
+    public static Task<IEnumerable<T>> AsEnumerableAsync<T>(this Task<IList<T>> self)
         => self.ContinueWith(t => t.Result?.AsEnumerable());
 }
