@@ -48,7 +48,7 @@ public class TaskExtensionsTests
         // Arrange
         Task Method()
         {
-            return new Task(() => Thread.Sleep(delay), CancellationToken.None, TaskCreationOptions.None);
+            return new Task(() => Task.Delay(delay).Wait(), CancellationToken.None, TaskCreationOptions.None);
         }
         
         // Act
