@@ -1,6 +1,6 @@
 using System.Diagnostics;
-using Xunit;
 using FluentAssertions;
+using Xunit;
 
 namespace Common.AsyncExtensions.Tests;
 
@@ -56,9 +56,8 @@ public class TaskExtensionsTests
 
         // Assert
         m.Should()
-            .Throw<CapturedAsyncException>()
-            .WithInnerException<Exception>()
-            .And.Message.Should().Be("One or more errors occurred. (hello)");
+            .Throw<Exception>()
+            .And.Message.Should().Be("hello");
     }
     
     [Fact]
@@ -76,9 +75,8 @@ public class TaskExtensionsTests
 
         // Assert
         m.Should()
-            .Throw<CapturedAsyncException>()
-            .WithInnerException<Exception>()
-            .And.Message.Should().Be("One or more errors occurred. (hello)");
+            .Throw<Exception>()
+            .And.Message.Should().Be("hello");
     }
 
     public static TheoryData<int, long, long> AwaitableTestCases =>

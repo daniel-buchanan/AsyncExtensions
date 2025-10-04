@@ -1,48 +1,35 @@
-using System;
 using System.Threading.Tasks;
 
 namespace Common.AsyncExtensions;
 
 public static class TaskExtensions
 {
-    private const string ErrorTemplate = "AsyncExtensions.WaitFor captured an exception: {0}";
-    
     /// <summary>
-    /// 
+    /// Wait for the task to finish (synchronously).
     /// </summary>
-    /// <param name="self"></param>
-    /// <exception cref="CapturedAsyncException"></exception>
-    public static void WaitFor(this Task self)
-    {
-        try
-        {
-            self.Wait();
-        }
-        catch (Exception e)
-        {
-            var message = string.Format(ErrorTemplate, e.Message);
-            throw new CapturedAsyncException(message, e);
-        }
-    }
+    /// <param name="self">The task to be awaited.</param>
+    public static void WaitFor(this Task self) => self.AwaitTask();
 
     /// <summary>
-    /// 
+    /// Wait for the task to finish (synchronously) and return the result.
     /// </summary>
-    /// <param name="self"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    /// <exception cref="CapturedAsyncException"></exception>
+    /// <param name="self">The task to be awaited.</param>
+    /// <typeparam name="T">The type of the result.</typeparam>
+    /// <returns>The result of the awaited task.</returns>
     public static T WaitFor<T>(this Task<T> self)
     {
-        try
+        self.AwaitTask();
+        return self.Result;
+    }
+
+    private static void AwaitTask(this Task self)
+    {
+        if (self.Status == TaskStatus.Created)
         {
-            self.Wait();
-            return self.Result;
+            self.RunSynchronously();
+            return;
         }
-        catch (Exception e)
-        {
-            var message = string.Format(ErrorTemplate, e.Message);
-            throw new CapturedAsyncException(message, e);
-        }
+
+        self.Wait();
     }
 }

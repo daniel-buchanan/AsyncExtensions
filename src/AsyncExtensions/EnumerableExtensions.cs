@@ -41,4 +41,16 @@ public static class EnumerableExtensions
     /// <returns></returns>
     public static Task<T[]> ToArrayAsync<T>(this Task<List<T>> self)
         => self.ContinueWith(t => t.Result?.ToArray() ?? []);
+
+    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<IEnumerable<T>> self)
+        => self.ContinueWith(t => t.Result?.AsEnumerable());
+    
+    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<T[]> self)
+        => self.ContinueWith(t => t.Result?.AsEnumerable());
+    
+    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<List<T>> self)
+        => self.ContinueWith(t => t.Result?.AsEnumerable());
+    
+    public static Task<IEnumerable<T>> ToEnumerableAsync<T>(this Task<IList<T>> self)
+        => self.ContinueWith(t => t.Result?.AsEnumerable());
 }

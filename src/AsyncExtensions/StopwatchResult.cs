@@ -1,7 +1,8 @@
 using System;
 using System.Diagnostics;
 
-namespace Common.AsyncExtensions;
+// ReSharper disable once CheckNamespace
+namespace System.Diagnostics;
 
 /// <summary>
 /// Result from a <see cref="StopwatchExtensions.Time"/> method.

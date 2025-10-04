@@ -1,8 +1,10 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Common.AsyncExtensions;
 
-namespace Common.AsyncExtensions;
+// ReSharper disable once CheckNamespace
+namespace System.Diagnostics;
 
 public static class StopwatchExtensions
 {
@@ -16,12 +18,12 @@ public static class StopwatchExtensions
         => self.TimeAsync(() => { task(); return Task.CompletedTask; }).WaitFor();
     
     /// <summary>
-    /// 
+    /// Execute and time a given method and return a result representing the timing including the result of the provided method.
     /// </summary>
-    /// <param name="self"></param>
-    /// <param name="task"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
+    /// <param name="self">The <see cref="Stopwatch" /> instance to use.</param>
+    /// <param name="task">The <see cref="Action"/> or method to time.</param>
+    /// <typeparam name="T">The result type of the method being timed.</typeparam>
+    /// <returns>A new <see cref="StopwatchResult"/> representing the timing of the method and it's result.</returns>
     public static StopwatchResult<T> Time<T>(this Stopwatch self, Func<T> task)
         => self.TimeAsync(() => Task.FromResult(task())).WaitFor();
 
@@ -38,12 +40,12 @@ public static class StopwatchExtensions
     }
     
     /// <summary>
-    /// 
+    /// Execute and time a given method and return a result representing the timing including the result of the provided method.
     /// </summary>
-    /// <param name="self"></param>
-    /// <param name="task"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
+    /// <param name="self">The <see cref="Stopwatch" /> instance to use.</param>
+    /// <param name="task">The <see cref="Action"/> or method to time.</param>
+    /// <typeparam name="T">The result type of the method being timed.</typeparam>
+    /// <returns>A new <see cref="StopwatchResult"/> representing the timing of the method and it's result.</returns>
     public static async Task<StopwatchResult<T>> TimeAsync<T>(this Stopwatch self, Func<Task<T>> task)
     {
         self.Reset();
